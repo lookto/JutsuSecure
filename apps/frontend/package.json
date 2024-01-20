@@ -9,7 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "@mdi/js": "^7.4.47",
+    "@mediapipe/tasks-vision": "^0.10.9",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.11",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",

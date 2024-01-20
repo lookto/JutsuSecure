@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router';
+<script setup lang='ts'>
+
 // INTERFACES
 
 // PROPS, STORES, EMITS, ...
@@ -11,12 +11,16 @@ import { RouterView } from 'vue-router';
 // FUNCTIONS
 
 // LIFECYCLE HOOKS, WATCHERS
+
 </script>
 <template>
-  <div class="min-h-[100svh]">
-    <RouterView />
+  <div class="w-full flex flex-col items-center"> 
+    <div class="max-w-4xl w-full">
+      <slot />
+    </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+</style>
 <style>
 </style>

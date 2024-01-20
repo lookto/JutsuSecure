@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router';
+<script setup lang='ts'>
+
 // INTERFACES
 
 // PROPS, STORES, EMITS, ...
@@ -11,12 +11,14 @@ import { RouterView } from 'vue-router';
 // FUNCTIONS
 
 // LIFECYCLE HOOKS, WATCHERS
+
 </script>
 <template>
-  <div class="min-h-[100svh]">
-    <RouterView />
+  <div>
+    Ich bin Home
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+</style>
 <style>
 </style>
