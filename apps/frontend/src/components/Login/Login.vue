@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref, onBeforeMount, watchEffect } from 'vue';
+import { ref, onBeforeMount, watchEffect, toRaw } from 'vue';
 import Button from '../Button/Button.vue';
 import Webcam from '../Webcam/Webcam.vue';
 import { GestureRecognizer, FilesetResolver } from '@mediapipe/tasks-vision';
 import { sleep } from '@/common/sleep';
+// @ts-ignore
+import task from '@/assets/gesture_recognizer.task'
 
 // INTERFACES
 
@@ -12,6 +14,8 @@ const modelLoaded = ref<boolean>(false);
 const jutsuRecognizer = ref<GestureRecognizer>();
 const videoRef = ref<HTMLVideoElement>();
 const lastJutsuTime = ref<number>(-1);
+const currentJutsu = ref<string>('None');
+const ninjaConfidence = ref<number>(0)
 
 // REACTIVE VARS
 
@@ -25,7 +29,8 @@ const createJutsuRecognizer = async () => {
   jutsuRecognizer.value = await GestureRecognizer.createFromOptions(vision, {
     baseOptions: {
       modelAssetPath:
-        'https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task',
+        task,
+        // 'https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task',
       delegate: 'GPU',
     },
     numHands: 2,
@@ -51,9 +56,15 @@ const predictJutsu = async() => {
   const nowInMs = Date.now();
   if (videoRef.value.currentTime !== lastJutsuTime.value) {
     lastJutsuTime.value = videoRef.value.currentTime;
-    const results = jutsuRecognizer.value.recognizeForVideo(videoRef.value, nowInMs);
-    console.log(results.landmarks)
+    const results = toRaw(jutsuRecognizer.value).recognizeForVideo(videoRef.value, nowInMs);
+    if (results.gestures[0]?.[0]) {
+      
+      currentJutsu.value = (results.gestures[0][0])?.categoryName || 'None';
+      ninjaConfidence.value =  (results.gestures[0][0])?.score || 0;
+    }
   }
+
+  window.requestAnimationFrame(predictJutsu);
 
 }
 
@@ -71,6 +82,8 @@ onBeforeMount(() => {
 <template>
   <div class="flex flex-col items-center gap-6">
     <Webcam :loading="modelLoaded" />
+    {{ currentJutsu }}
+    {{ ninjaConfidence }}
     <div class="flex w-full flex-row justify-center gap-4">
       <Button type="alt">Zurücksetzen</Button>
       <Button type="primary">Login</Button>
