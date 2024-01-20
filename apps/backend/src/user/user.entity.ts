@@ -15,10 +15,10 @@ export class User extends BaseEntity {
   @Column()
   hashedJutsu: string;
 
-  @Column()
+  @Column({ unique: true })
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @CreateDateColumn()
