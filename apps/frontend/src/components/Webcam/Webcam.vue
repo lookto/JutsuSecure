@@ -51,5 +51,10 @@ onMounted(() => {
     <video v-show="!(loadingOverwrite || isLoading)" id="webcam" ref="cameraRef" class="w-full" autoplay></video>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+#webcam {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}</style>
 <style></style>
