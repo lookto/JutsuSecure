@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jutsu
+      MYSQL_USER: jutsu
+      MYSQL_PASSWORD: jutsu
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306

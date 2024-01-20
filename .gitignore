@@ -276,3 +276,6 @@ volumes
 hand_signs/
 rps_data_sample/
 *.zip
+
+# volumes
+mariadb/
