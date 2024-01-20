@@ -28,7 +28,7 @@ export class UserService {
 
     const user = await this.userRepository.findOne({ where: { email } });
 
-    if (!user && user.hashedJutsu !== this.createHashedJutsu(jutsu)) {
+    if (!user || user.hashedJutsu !== this.createHashedJutsu(jutsu)) {
       throw new UnauthorizedException();
     }
 

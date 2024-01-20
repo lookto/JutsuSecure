@@ -16,13 +16,14 @@ import Login from '@/components/Login/Login.vue';
 // LIFECYCLE HOOKS, WATCHERS
 </script>
 <template>
-  <div class="min-h-[100svh] flex flex-col justify-center">
-    <Container>
+  <div class="relative min-h-[100svh] flex flex-col justify-center">
+    <Container class="z-20">
       <Card> 
         <Login />
       </Card>
     </Container>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+</style>
 <style></style>

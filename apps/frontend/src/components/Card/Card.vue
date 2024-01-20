@@ -14,7 +14,7 @@
 
 </script>
 <template>
-  <div class="bg-zinc-200 w-full p-10 rounded-lg">
+  <div class="bg-zinc-200 w-full p-10 rounded-lg bg-opacity-90">
     <slot />
   </div>
 </template>

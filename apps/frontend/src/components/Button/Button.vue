@@ -21,7 +21,7 @@ const buttonStyles = computed(()=>  {
     case 'alt':
       return 'bg-zinc-800 hover:bg-zinc-900 text-white';
     case 'primary':
-      return 'bg-blue-700 hover:bg-blue-800 text-white';
+      return 'bg-orange-500 hover:bg-orange-600 text-white';
   }
 });
 
