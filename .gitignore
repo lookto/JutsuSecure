@@ -272,3 +272,11 @@ volumes
 
 # backend
 **/templates/dev
+
+# python
+.ipynb_checkpoints/
+
+# data
+hand_signs/
+rps_data_sample/
+*.zip
